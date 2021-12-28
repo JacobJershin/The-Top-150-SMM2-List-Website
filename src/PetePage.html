@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./Profile.CSS">
+    <title>Top 150 smm2 TEST</title>
+  </head>
+  <body>
+    <section id="navstuff">
+      <span id="navleft">
+	<a href="#">Home Page</a>
+      </span>
+      <span id="navright">
+	<a href="https://codermerlin.com/users/jacob-jershin/TheTop100.html">List Page</a>
+      </span>
+      <span id="navright">
+	<a href="#">Leaderboard Page</a>
+      </span>
+    </section>
+    <header>
+      <section id="line">
+      </section>
+    </header>
+
+    <h2>Demo JavaScript in Body</h2>
+
+    <p id="demo">error</p>
+        
+    <button type="button" onclick="myFunction()">Try it</button>
+    
+    <script>
+      
+      var Magia = 1
+      var Daphnes_Finale = 2
+      var Aya_Revive = 3
+      var Lunaria = 4
+      var Ultimate_Speedrun = 5
+      var Ascension_to_heaven = 6
+      var Ozymandias = 7
+      var YuHo_160 = 8
+      var BSW = 10
+      var Scarlet_Stronghold_Double = 20 + 5
+      var ProjectPipes2 = 21
+      var BombSpace = 22
+      var Bubblebath = 23
+      var OG = 34
+      var Amorous = 37
+      var Yoshivenetus = 38
+      var ProjectBombWithATwist = 59
+      var Project_Pipes = 62
+      var Glacial = 79
+      var Pogey = 83
+      var Tsar_Bomba = 91
+      var Scarlet = 96
+      var Lost_Forest = 104
+      var ScarletStrongholdPswitchx3 = 121
+      var Fiery_Wind_Blaster = 123
+      var NoBombNoLife = 137
+
+      
+      const PlayerClears = [Daphnes_Finale, Ultimate_Speedrun]
+      const PlayerProgressLevel = [Magia]
+      const PlayerProgress = [77]
+      
+
+      const PeteClears = [Scarlet_Stronghold_Double, Bubblebath, Project_Pipes, ProjectBombWithATwist, Scarlet, ScarletStrongholdPswitchx3, Lost_Forest, Fiery_Wind_Blaster, Ascension_to_heaven]
+      const PeteProgressLevel = [Daphnes_Finale, Ozymandias, Yoshivenetus, Amorous, Tsar_Bomba, Glacial, YuHo_160, OG, NoBombNoLife, BSW, ProjectPipes2, BombSpace, Pogey]
+      const PeteProgress = [64, 88, 55, 99, 89, 85, 62, 85, 95, 80, 85, 55, 95]
+
+
+      const PlayerNameArray = ["Pete", "Player"]
+      const MasterClears = [PeteClears, PlayerClears]
+      const MasterProgressLevel = [PeteProgressLevel, PlayerProgressLevel]
+      const MasterPlayerProgress = [PeteProgress, PlayerProgress]
+
+      var PlayerID = 1
+      
+      function PointCalc(PlaceMent) {
+	  return Math.pow(1.054411903089, ((PlaceMent+40)/1.4))
+      }
+
+      function ClearPoints(Array) {
+	  index = 0
+	  total = 0
+	  while (index < Array.length) {
+	      total += PointCalc(101 - Array[index] + Daphnes_Finale - 1)
+	      index += 1
+	  }
+	  return total
+      }
+
+      function ProgressCalc(Placement, Progress) {
+	  PointPrecent = ((Progress/10.0)*(Progress/10.0) * 0.01)
+	  return (PointCalc(Placement + Daphnes_Finale - 1)*PointPrecent)*0.90
+      }
+
+      function ProgressPoint(ProgressArray, LevelArray) {
+	  index = 0
+	  total = 0
+	  while (index < ProgressArray.length) {
+	      total += ProgressCalc(101 - LevelArray[index], ProgressArray[index])
+	      index += 1
+	  }
+	  return total
+      }
+
+      function MasterPoints(ProgressArray, ProgressLevelArray, ClearArray) {
+	  return ProgressPoint(ProgressArray, ProgressLevelArray) +  ClearPoints(ClearArray)
+      }
+      
+      document.getElementById("demo").innerHTML = MasterPoints(MasterPlayerProgress[PlayerID], MasterProgressLevel[PlayerID], MasterClears[PlayerID]);
+    </script>
+  </body>
+</html>
